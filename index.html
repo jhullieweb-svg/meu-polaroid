@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meu Polaroid</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topo">
+    <div>
+        <h1>📸 Meu Polaroid</h1>
+        <p>Transforme suas fotos em Polaroids prontas para imprimir</p>
+    </div>
+</header>
+
+
+<main class="app">
+
+    <!-- =====================================================
+         PAINEL LATERAL
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-section">
+
+            <h2>Fotos</h2>
+
+            <label
+                for="fileInput"
+                class="upload-button"
+            >
+                📷 Adicionar fotos
+            </label>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept="image/*"
+                multiple
+                hidden
+            >
+
+            <div
+                id="photoCount"
+                class="photo-count"
+            >
+                Nenhuma foto adicionada
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-divider"></div>
+
+
+        <!-- =================================================
+             CONFIGURAÇÕES
+        ================================================== -->
+
+        <div
+            id="settingsPanel"
+            class="settings-panel hidden"
+        >
+
+            <div class="selected-photo">
+
+                <strong id="editingPhotoTitle">
+                    Editando foto
+                </strong>
+
+                <span id="editingPhotoName">
+                    Nenhuma foto selecionada
+                </span>
+
+            </div>
+
+
+            <div class="settings-tabs">
+
+                <button
+                    id="tabFraming"
+                    class="settings-tab active"
+                    type="button"
+                >
+                    🖼️ Enquadramento
+                </button>
+
+                <button
+                    id="tabCaption"
+                    class="settings-tab"
+                    type="button"
+                >
+                    ✏️ Legenda
+                </button>
+
+            </div>
+
+
+            <!-- =============================================
+                 ENQUADRAMENTO
+            ============================================== -->
+
+            <div
+                id="framingEditor"
+                class="settings-content"
+            >
+
+                <p class="help-text">
+                    Arraste a foto diretamente dentro da Polaroid
+                    para escolher o enquadramento.
+                </p>
+
+
+                <div class="zoom-control">
+
+                    <button
+                        id="zoomOut"
+                        class="control-button"
+                        type="button"
+                    >
+                        −
+                    </button>
+
+                    <span id="globalZoomValue">
+                        100%
+                    </span>
+
+                    <button
+                        id="zoomIn"
+                        class="control-button"
+                        type="button"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+
+                <button
+                    id="rotatePhoto"
+                    class="wide-button"
+                    type="button"
+                >
+                    ↻ Girar 90°
+                </button>
+
+
+                <button
+                    id="resetPhoto"
+                    class="wide-button"
+                    type="button"
+                >
+                    ⟳ Centralizar
+                </button>
+
+            </div>
+
+
+            <!-- =============================================
+                 LEGENDA
+            ============================================== -->
+
+            <div
+                id="captionEditor"
+                class="settings-content hidden"
+            >
+
+                <label
+                    class="field-label"
+                    for="captionInput"
+                >
+                    Legenda
+                </label>
+
+                <input
+                    id="captionInput"
+                    class="text-input"
+                    type="text"
+                    maxlength="80"
+                    placeholder="Digite sua legenda..."
+                >
+
+
+                <label
+                    class="field-label"
+                    for="fontSelect"
+                >
+                    Fonte
+                </label>
+
+                <select
+                    id="fontSelect"
+                    class="select-input"
+                >
+                    <option value="Arial">Arial</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Garamond">Garamond</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Lucida Console">Lucida Console</option>
+                    <option value="Impact">Impact</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Brush Script MT">Brush Script</option>
+                    <option value="Palatino Linotype">Palatino</option>
+                    <option value="Book Antiqua">Book Antiqua</option>
+                </select>
+
+
+                <label
+                    class="field-label"
+                    for="fontSizeSelect"
+                >
+                    Tamanho da fonte
+                </label>
+
+                <select
+                    id="fontSizeSelect"
+                    class="select-input"
+                >
+                    <option value="8">8 px</option>
+                    <option value="10">10 px</option>
+                    <option value="12">12 px</option>
+                    <option value="14">14 px</option>
+                    <option value="16">16 px</option>
+                    <option value="18" selected>18 px</option>
+                    <option value="20">20 px</option>
+                    <option value="22">22 px</option>
+                    <option value="24">24 px</option>
+                    <option value="26">26 px</option>
+                    <option value="28">28 px</option>
+                    <option value="30">30 px</option>
+                    <option value="32">32 px</option>
+                    <option value="36">36 px</option>
+                    <option value="40">40 px</option>
+                </select>
+
+
+                <div class="option-row">
+
+                    <button
+                        id="boldButton"
+                        class="style-button"
+                        type="button"
+                    >
+                        <strong>B</strong>
+                    </button>
+
+                    <button
+                        id="italicButton"
+                        class="style-button"
+                        type="button"
+                    >
+                        <em>I</em>
+                    </button>
+
+                </div>
+
+
+                <div class="option-row alignment-row">
+
+                    <button
+                        class="align-button"
+                        data-align="left"
+                        type="button"
+                    >
+                        ⬅
+                    </button>
+
+                    <button
+                        class="align-button active"
+                        data-align="center"
+                        type="button"
+                    >
+                        ↔
+                    </button>
+
+                    <button
+                        class="align-button"
+                        data-align="right"
+                        type="button"
+                    >
+                        ➡
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-divider"></div>
+
+
+        <!-- =================================================
+             AÇÕES
+        ================================================== -->
+
+        <div class="sidebar-section actions">
+
+            <button
+                id="generatePdf"
+                class="pdf-button"
+                type="button"
+            >
+                📄 Gerar PDF A4
+            </button>
+
+            <button
+                id="clearAll"
+                class="clear-button"
+                type="button"
+            >
+                🗑️ Limpar tudo
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         ÁREA PRINCIPAL
+    ====================================================== -->
+
+    <section class="workspace">
+
+        <div class="workspace-header">
+
+            <div>
+                <h2>Pré-visualização</h2>
+                <span>
+                    Folhas A4 — 9 Polaroids por folha
+                </span>
+            </div>
+
+        </div>
+
+
+        <div
+            id="pages"
+            class="pages"
+        ></div>
+
+
+        <div
+            id="emptyState"
+            class="empty-state"
+        >
+
+            <div class="empty-icon">
+                📷
+            </div>
+
+            <h2>
+                Adicione suas fotos
+            </h2>
+
+            <p>
+                Suas fotos aparecerão aqui organizadas
+                automaticamente em folhas A4.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     JSPDF
+========================================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>

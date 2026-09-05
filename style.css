@@ -1,0 +1,954 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #eef0f2;
+    color: #222;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.topo {
+    width: 100%;
+
+    background: white;
+
+    border-bottom: 1px solid #ddd;
+
+    padding: 18px 25px;
+}
+
+.topo h1 {
+    margin: 0 0 5px;
+
+    font-size: 25px;
+}
+
+.topo p {
+    margin: 0;
+
+    color: #707070;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   LAYOUT PRINCIPAL
+========================================================= */
+
+.app {
+    display: flex;
+
+    align-items: flex-start;
+
+    width: 100%;
+
+    min-height: calc(100vh - 86px);
+}
+
+
+/* =========================================================
+   PAINEL LATERAL
+========================================================= */
+
+.sidebar {
+    width: 285px;
+
+    min-width: 285px;
+
+    min-height: calc(100vh - 86px);
+
+    background: white;
+
+    border-right: 1px solid #d8d8d8;
+
+    padding: 22px 18px;
+
+    position: sticky;
+
+    top: 0;
+
+    align-self: flex-start;
+
+    overflow-y: auto;
+}
+
+.sidebar-section {
+    width: 100%;
+}
+
+.sidebar-section h2 {
+    margin: 0 0 14px;
+
+    font-size: 17px;
+}
+
+.sidebar-divider {
+    height: 1px;
+
+    background: #e3e3e3;
+
+    margin: 20px 0;
+}
+
+
+/* =========================================================
+   BOTÃO ADICIONAR
+========================================================= */
+
+.upload-button {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 100%;
+
+    padding: 12px 15px;
+
+    background: #111;
+
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: .15s;
+}
+
+.upload-button:hover {
+    background: #333;
+}
+
+.photo-count {
+    margin-top: 9px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   PAINEL DE CONFIGURAÇÕES
+========================================================= */
+
+.settings-panel.hidden {
+    display: none;
+}
+
+.selected-photo {
+    margin-bottom: 15px;
+
+    padding: 10px;
+
+    background: #f5f5f5;
+
+    border-radius: 8px;
+
+    border: 1px solid #e3e3e3;
+}
+
+.selected-photo strong {
+    display: block;
+
+    font-size: 13px;
+}
+
+.selected-photo span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #777;
+
+    font-size: 11px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   ABAS
+========================================================= */
+
+.settings-tabs {
+    display: flex;
+
+    width: 100%;
+
+    border-bottom: 1px solid #ddd;
+
+    margin-bottom: 15px;
+}
+
+.settings-tab {
+    flex: 1;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 9px 4px;
+
+    cursor: pointer;
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    border-bottom: 2px solid transparent;
+}
+
+.settings-tab:hover {
+    background: #f6f6f6;
+}
+
+.settings-tab.active {
+    color: #111;
+
+    border-bottom-color: #111;
+}
+
+
+/* =========================================================
+   CONTEÚDO DAS CONFIGURAÇÕES
+========================================================= */
+
+.settings-content.hidden {
+    display: none;
+}
+
+.help-text {
+    margin: 0 0 15px;
+
+    color: #777;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ZOOM
+========================================================= */
+
+.zoom-control {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+.zoom-control span {
+    min-width: 50px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #555;
+}
+
+.control-button {
+    width: 38px;
+
+    height: 34px;
+
+    border: 1px solid #ccc;
+
+    background: #f6f6f6;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+.control-button:hover {
+    background: #e8e8e8;
+}
+
+
+/* =========================================================
+   BOTÕES LARGOS
+========================================================= */
+
+.wide-button {
+    display: block;
+
+    width: 100%;
+
+    height: 36px;
+
+    margin-top: 8px;
+
+    border: 1px solid #ccc;
+
+    background: #f7f7f7;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+}
+
+.wide-button:hover {
+    background: #e8e8e8;
+}
+
+
+/* =========================================================
+   CAMPOS
+========================================================= */
+
+.field-label {
+    display: block;
+
+    margin: 11px 0 5px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: #555;
+}
+
+.text-input,
+.select-input {
+    width: 100%;
+
+    height: 35px;
+
+    padding: 7px 9px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    background: white;
+
+    font-family: inherit;
+
+    font-size: 12px;
+}
+
+.text-input:focus,
+.select-input:focus {
+    outline: 2px solid #ddd;
+
+    border-color: #999;
+}
+
+
+/* =========================================================
+   BOTÕES DE ESTILO
+========================================================= */
+
+.option-row {
+    display: flex;
+
+    gap: 6px;
+
+    margin-top: 12px;
+}
+
+.style-button,
+.align-button {
+    width: 36px;
+
+    height: 33px;
+
+    border: 1px solid #ccc;
+
+    background: #f7f7f7;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+.style-button:hover,
+.align-button:hover {
+    background: #e7e7e7;
+}
+
+.style-button.active,
+.align-button.active {
+    background: #222;
+
+    color: white;
+
+    border-color: #222;
+}
+
+.alignment-row {
+    justify-content: center;
+}
+
+
+/* =========================================================
+   AÇÕES
+========================================================= */
+
+.actions {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.pdf-button,
+.clear-button {
+    width: 100%;
+
+    min-height: 40px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    font-size: 13px;
+}
+
+.pdf-button {
+    border: none;
+
+    background: #222;
+
+    color: white;
+}
+
+.pdf-button:hover {
+    background: #444;
+}
+
+.pdf-button:disabled {
+    opacity: .6;
+
+    cursor: wait;
+}
+
+.clear-button {
+    border: 1px solid #ccc;
+
+    background: white;
+
+    color: #333;
+}
+
+.clear-button:hover {
+    background: #f1f1f1;
+}
+
+
+/* =========================================================
+   ÁREA DE TRABALHO
+========================================================= */
+
+.workspace {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 25px;
+
+    overflow-x: auto;
+}
+
+.workspace-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.workspace-header h2 {
+    margin: 0 0 4px;
+
+    font-size: 18px;
+}
+
+.workspace-header span {
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   FOLHAS
+========================================================= */
+
+.pages {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 45px;
+
+    padding-bottom: 50px;
+}
+
+
+/* =========================================================
+   PAPEL A4
+========================================================= */
+
+.paper {
+    width: 794px;
+
+    height: 1123px;
+
+    min-width: 794px;
+
+    min-height: 1123px;
+
+    background: white;
+
+    position: relative;
+
+    flex-shrink: 0;
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, .15);
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   POLAROID
+   7 CM × 9 CM
+========================================================= */
+
+.polaroid {
+    position: absolute;
+
+    width: 265px;
+
+    height: 340px;
+
+    background: white;
+
+    border: 1px solid #d6d6d6;
+
+    box-shadow:
+        0 2px 7px rgba(0, 0, 0, .12);
+
+    overflow: visible;
+
+    z-index: 1;
+}
+
+
+/*
+   A proporção é aproximadamente:
+
+   265 px = 7 cm
+   340 px = 9 cm
+
+   A parte de baixo fica maior.
+*/
+
+
+/* =========================================================
+   LINHA DE CORTE
+========================================================= */
+
+.cut-line {
+    position: absolute;
+
+    left: -2px;
+    right: -2px;
+    top: -2px;
+    bottom: -2px;
+
+    border: 1px dashed #aaa;
+
+    pointer-events: none;
+
+    z-index: 30;
+}
+
+
+/* =========================================================
+   ÁREA DA FOTO
+========================================================= */
+
+.photo-frame {
+    position: absolute;
+
+    width: 235px;
+
+    height: 258px;
+
+    left: 15px;
+
+    top: 15px;
+
+    overflow: hidden;
+
+    background: #eee;
+
+    cursor: grab;
+
+    touch-action: none;
+
+    z-index: 2;
+}
+
+.photo-frame.dragging {
+    cursor: grabbing;
+}
+
+.photo-frame img {
+    position: absolute;
+
+    max-width: none;
+
+    max-height: none;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    pointer-events: none;
+
+    transform-origin: center center;
+}
+
+
+/* =========================================================
+   ÁREA INFERIOR DA POLAROID
+========================================================= */
+
+.caption-area {
+    position: absolute;
+
+    left: 15px;
+
+    right: 15px;
+
+    bottom: 13px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    z-index: 5;
+}
+
+.caption-text {
+    width: 100%;
+
+    color: #111;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   BOTÃO ENQUADRAMENTO
+========================================================= */
+
+.edit-frame-button {
+    position: absolute;
+
+    top: 5px;
+
+    right: 5px;
+
+    width: 25px;
+
+    height: 25px;
+
+    padding: 0;
+
+    border: 1px solid #ccc;
+
+    background: rgba(255, 255, 255, .95);
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    z-index: 40;
+
+    font-size: 11px;
+
+    opacity: .85;
+}
+
+.edit-frame-button:hover {
+    opacity: 1;
+
+    background: white;
+}
+
+
+/* =========================================================
+   BOTÃO LEGENDA
+========================================================= */
+
+.edit-caption-button {
+    position: absolute;
+
+    right: 5px;
+
+    bottom: 5px;
+
+    width: 25px;
+
+    height: 25px;
+
+    padding: 0;
+
+    border: 1px solid #ccc;
+
+    background: rgba(255, 255, 255, .95);
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    z-index: 40;
+
+    font-size: 11px;
+
+    opacity: .85;
+}
+
+.edit-caption-button:hover {
+    opacity: 1;
+
+    background: white;
+}
+
+
+/* =========================================================
+   ESTADO VAZIO
+========================================================= */
+
+.empty-state {
+    width: 100%;
+
+    max-width: 600px;
+
+    margin: 70px auto;
+
+    text-align: center;
+
+    color: #777;
+}
+
+.empty-icon {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+}
+
+.empty-state h2 {
+    margin: 0 0 8px;
+
+    color: #333;
+
+    font-size: 20px;
+}
+
+.empty-state p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+
+/*
+   Em telas pequenas a barra continua na lateral,
+   mas fica menor.
+*/
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 245px;
+
+        min-width: 245px;
+    }
+
+    .workspace {
+        padding: 15px;
+    }
+
+}
+
+
+/*
+   Celular:
+   a lateral vira uma barra superior compacta somente
+   quando realmente não existe espaço físico.
+*/
+
+@media (max-width: 700px) {
+
+    .app {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+
+        top: auto;
+
+        width: 100%;
+
+        min-width: 0;
+
+        min-height: auto;
+
+        border-right: none;
+
+        border-bottom: 1px solid #ddd;
+
+        padding: 12px;
+    }
+
+    .sidebar-divider {
+        margin: 12px 0;
+    }
+
+    .settings-panel {
+        max-width: 500px;
+
+        margin: 0 auto;
+    }
+
+    .workspace {
+        width: 100%;
+
+        overflow-x: auto;
+
+        padding: 15px 10px 40px;
+    }
+
+    .workspace-header {
+        padding-left: 5px;
+    }
+
+    .pages {
+        align-items: flex-start;
+    }
+
+    .paper {
+        transform-origin: top left;
+
+        transform: scale(.48);
+
+        margin-bottom: -570px;
+
+        margin-left: 0;
+    }
+
+}
+
+
+/*
+   Celulares muito pequenos.
+*/
+
+@media (max-width: 430px) {
+
+    .topo {
+        padding: 14px;
+    }
+
+    .topo h1 {
+        font-size: 21px;
+    }
+
+    .topo p {
+        font-size: 11px;
+    }
+
+    .sidebar {
+        padding: 10px;
+    }
+
+    .paper {
+        transform: scale(.40);
+
+        margin-bottom: -670px;
+    }
+
+}
